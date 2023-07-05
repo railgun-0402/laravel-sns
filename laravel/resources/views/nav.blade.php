@@ -2,18 +2,26 @@
     <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>memo</a>
 
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="">ユーザ登録</a>
-        </li>
 
+        @guest
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">ユーザ登録</a>
+        </li>
+        @endguest
+
+        @guest
         <li class="nav-item">
             <a class="nav-link" href="">ログイン</a>
         </li>
+        @endguest
 
+        @auth
         <li class="nav-item">
             <a class="nav-link" href=""><i class="fas fa-pen mr-1"></i>投稿する</a>
         </li>
+        @endauth
 
+        @auth
         <!-- Dropdown -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -31,10 +39,10 @@
                 </button>
             </div>
         </li>
-        <form id="logout-button" method="POST" action="">
+        <form id="logout-button" method="POST" action="{{ route('logout') }}">
+            @csrf
             <!-- Dropdown -->
         </form>
+        @endauth
     </ul>
-
-
 </nav>
