@@ -16,6 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->text('body');
             $table->unsignedBigInteger('user_id');
             // articlesテーブルのuser_idカラムは、usersテーブルのidカラムを参照
             $table->foreign('user_id')->references('id')->on('users');
